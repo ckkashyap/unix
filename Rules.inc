@@ -38,8 +38,8 @@ OS=$(shell uname)
 ifeq ($(OS), Darwin)
 LD=$(LINKEDITOR)
 AR=$(ARCHIVE)
-GCC=/usr/local/gcc-4.8.1-for-linux64/bin/x86_64-pc-linux-gcc
-OBJCOPY=/usr/local/gcc-4.8.1-for-linux64/bin/x86_64-pc-linux-objcopy
+GCC=$(CC)
+OBJCOPY=$(OBJCPY)
 LD_LIBRARY_PATH=DYLD_LIBRARY_PATH
 QEMU=qemu-system-x86_64 -kernel staging/kernel.sys -serial stdio -no-reboot -d int
 RUST_DIR=$(MAC_RUST_DIR)
