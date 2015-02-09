@@ -22,6 +22,9 @@
 
 LD=ld
 AR=ar
+GCC=gcc
+OBJCOPY=objcopy
+
 QEMU=qemu-system-x86_64 -kernel staging/kernel.sys -serial stdio -vnc :1 -no-reboot -d int -s
 LINUX_TARGET=x86_64-unknown-linux-gnu
 MAC_TARGET=x86_64-apple-darwin
@@ -31,11 +34,12 @@ RUST_DIR=$(LINUX_RUST_DIR)
 OBJDUMP=objdump
 RUSTC=LD_LIBRARY_PATH=$(LINUX_RUST_DIR)/lib $(LINUX_RUST_DIR)/bin/rustc
 
-
 OS=$(shell uname)
 ifeq ($(OS), Darwin)
 LD=$(LINKEDITOR)
 AR=$(ARCHIVE)
+GCC=$(CC)
+OBJCOPY=$(OBJCPY)
 LD_LIBRARY_PATH=DYLD_LIBRARY_PATH
 QEMU=qemu-system-x86_64 -kernel staging/kernel.sys -serial stdio -no-reboot -d int
 RUST_DIR=$(MAC_RUST_DIR)
